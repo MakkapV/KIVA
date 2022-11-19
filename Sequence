@@ -1,0 +1,70 @@
+package com.kiva;
+
+public interface AwsInterface {
+    public void instruct();
+    public void updateDB();
+}
+
+package com.kiva;
+
+public class Kiva implements AwsInterface {
+    @Override
+    public void instruct() {
+        System.out.println("AWS instructs KIVA");
+
+    }
+
+    @Override
+    public void updateDB() {
+        System.out.println("AWS update DB");
+    }
+
+    public void movePodtoWareHouse(){
+        System.out.println("KIVA moves the pod to the warehouse");
+        Warehouse warehouse = new Warehouse();
+        warehouse.fetchPod();
+    }
+
+    public void movePodtoOperator(){
+        System.out.println("KIVA moves the pod to operator");
+    }
+
+    public void movePodBacktoWarehouse(){
+        System.out.println("KIVA moves the pod to warehouse and places it in random position");
+    }
+}
+
+package com.kiva;
+
+public class Main {
+
+    public static void main(String[] args) {
+	 Operator operator = new Operator();
+	 operator.pickProduct();
+    }
+}
+
+
+package com.kiva;
+
+public class Operator {
+    public void pickProduct(){
+        System.out.println("Pick a product");
+        Kiva kiva = new Kiva();
+        kiva.instruct();
+        kiva.movePodtoWareHouse();
+        kiva.updateDB();
+        kiva.movePodtoOperator();
+        kiva.movePodBacktoWarehouse();
+        kiva.updateDB();
+    }
+
+}
+
+package com.kiva;
+
+public class Warehouse {
+    public void fetchPod(){
+        System.out.println("KIVA fetches the pod from the warehouse");
+    }
+}
